@@ -1,5 +1,7 @@
 from deepspeech import Model
 import numpy as np
+import shlex
+import subprocess
 from timeit import default_timer as timer
 import urllib.request
 import wave
