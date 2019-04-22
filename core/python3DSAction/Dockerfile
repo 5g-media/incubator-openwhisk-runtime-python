@@ -7,6 +7,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
         python3-pip \
         vim \
         wget \
+        sox \
         && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir deepspeech \
@@ -14,19 +15,8 @@ RUN pip3 install --no-cache-dir deepspeech \
         && pip3 install --no-cache-dir flask==0.12 \
         && pip3 install --no-cache-dir requests==2.13.0
 
-#RUN pip3 install --upgrade pip \
-#        && pip3 install --no-cache-dir deepspeech \
-#        && pip3 install --no-cache-dir gevent==1.2.1 \
-#        && pip3 install --no-cache-dir flask==0.12 \
-#        && pip3 install --no-cache-dir requests==2.13.0
-
 RUN wget https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/deepspeech-0.4.1-models.tar.gz
 RUN tar xvfz deepspeech-0.4.1-models.tar.gz
-
-### TEMP start
-RUN wget https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/audio-0.4.1.tar.gz
-RUN tar xfvz audio-0.4.1.tar.gz
-### TEMP end
 
 RUN mkdir -p /actionProxy
 ADD https://raw.githubusercontent.com/apache/incubator-openwhisk-runtime-docker/dockerskeleton%401.3.3/core/actionProxy/actionproxy.py /actionProxy/actionproxy.py
