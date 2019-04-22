@@ -41,6 +41,10 @@ Replace `python:3` with `python:2` to use python 2.
 ### Python 3 AI Action
 This action enables developers to create AI Services with OpenWhisk. It comes with preinstalled libraries useful for running machine learning and deep learning inferences. See more about [python3aiaction](./core/python3AiAction).
 
+### Python 3 DS Action
+This action enables developers to create DeepSpeech Services with OpenWhisk. It comes with preinstalled libraries useful for running deepspeech interfaces. See more about [python3dsaction](./core/python3DSAction).
+
+
 ### Local development
 ```
 ./gradlew core:pythonAction:distDocker

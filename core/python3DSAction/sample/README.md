@@ -1,0 +1,38 @@
+# DeepSpeech action example
+
+The function expects the following parameter as input
+
+* `url` - the location of the audio file (wave format) 
+
+The function returns the transcript and the time it took to perform the inference
+
+```bash
+{
+    'transcript': <message transcript>,
+    'inference_time': <inference in seconds>
+}
+```
+
+## Running example of the function:
+
+### Create the action
+
+```
+wsk action create myAction ./ds_action.py --kind deepspeechpy:4
+```
+
+### Invoke the action
+
+Use url to one of the sample wave files
+
+```
+wsk action invoke -r myAction -p url https://raw.githubusercontent.com/5g-media/incubator-openwhisk-runtime-python/deepspeech/core/python3DSAction/sample/audio/2830-3980-0043.wav
+```
+
+Expect a similar result
+```bash
+{
+    "inference_time": "2.1945881301071495",
+    "transcript": "experience proves this"
+}
+```
