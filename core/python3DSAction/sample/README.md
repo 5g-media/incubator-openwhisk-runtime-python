@@ -18,7 +18,7 @@ The function returns the transcript and the time it took to perform the inferenc
 ### Create the action
 
 ```
-wsk action create myAction ./ds_action.py --kind deepspeechpy:4
+wsk action update myAction ds_action.py --docker openwhisk/python3dsaction
 ```
 
 ### Invoke the action
