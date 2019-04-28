@@ -37,7 +37,7 @@ Expect a similar result
 }
 ```
 
-## Running the example of GPU enabled host
+## Running the example on GPU enabled host
 
 The same function can be invoked on a GPU node using the GPU runtime image (i.e. openwhisk/python3dscudaaction). Ensure the following prerequisites are met before attempting to invoke it: **TBD**
 

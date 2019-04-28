@@ -10,15 +10,15 @@ Bellow are the versions for the included libraries:
 
 | Image Version | Package | Notes |
 | ------------- | ------- | ----- |
-| python3dsaction 0.1      | Tensorflow 1.12.0, DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu Xenail, Python 3.5.2. The pre-trained model is installed under /models |
-| python3dscudaaction 0.1 | DeepSpeech-gpu 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Cuda 9.0, cuDNN 7.0, Python 3.5 
+| python3dsaction | DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Python 3.5.2. The pre-trained model is installed under /models |
+| GPU: python3dscudaaction | DeepSpeech-gpu 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Cuda 9.0, cuDNN 7.0, Python 3.5 
 
 
 #### DS Action Sample
 
 To view an example with this DS Action check the [sample/speech recognition](./sample/).
 
-### 0.1 Details
+### Image Details
 #### Available Python packages
 
 For a complete list execute:
