@@ -8,7 +8,7 @@ Bellow are the versions for the included libraries:
 
 | Image Version | Package | Notes |
 | ------------- | ------- | ----- |
-| 0.1      | Tensorflow 1.12.0, DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu Xenail, Python 3.5.2. The pre-trained model is installed under /models
+| 0.1      | DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.0.4, Python 3.5.2. The pre-trained model is installed under /models
 
 
 #### DS Action Sample
