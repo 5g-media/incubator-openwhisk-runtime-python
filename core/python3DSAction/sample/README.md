@@ -36,3 +36,19 @@ Expect a similar result
     "transcript": "experience proves this"
 }
 ```
+
+## Running the example of GPU enabled host
+
+The same function can be invoked on a GPU node using the GPU runtime image (i.e. openwhisk/python3dscudaaction). Ensure the following prerequisites are met before attempting to invoke it: **TBD**
+
+### Create the action
+
+```
+wsk action update myAction ds_action.py --docker openwhisk/python3dscudaaction
+```
+
+### Invoke the action
+
+Invocation is same as described in above section
+
+
