@@ -18,7 +18,7 @@ The function returns the transcript and the time it took to perform the inferenc
 ### Create the action
 
 ```
-wsk action update myAction ds_action.py --docker openwhisk/python3dsaction
+wsk action update myAction ds_action.py --docker docker5gmedia/python3dsaction
 ```
 
 ### Invoke the action
@@ -39,16 +39,16 @@ Expect a similar result
 
 ## Running the example on GPU enabled host
 
-The same function can be invoked on a GPU node using the GPU runtime image (i.e. openwhisk/python3dscudaaction). Ensure the following prerequisites are met before attempting to invoke it: **TBD**
+The same function can be invoked on a GPU node using the GPU runtime image (i.e. openwhisk/python3dscudaaction). Ensure the following [prerequisites](../README-gpu.md) are met before attempting to invoke it.
 
 ### Create the action
 
 ```
-wsk action update myAction ds_action.py --docker openwhisk/python3dscudaaction
+wsk action update myAction-gpu ds_action.py -m 2048 --kind python3dscudaaction@selector
 ```
 
 ### Invoke the action
 
-Invocation is same as described in above section
+Invocation is same as described in above section substituted with name myAction-gpu
 
 

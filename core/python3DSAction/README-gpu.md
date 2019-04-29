@@ -20,26 +20,35 @@ and nvidia-docker in each GPU node you have just joined, and deploy the k8s-nvid
 
 You should deploy OpenWhisk control plane on your Kubernetes cluster using the forked [incubator-openwhisk-deploy-kube](https://github.com/5g-media/incubator-openwhisk-deploy-kube/tree/kind-selector) which already supports invoking actions on GPU Kubernetes nodes.
 
-Your next step before the actual OpenWhisk deployment would be to define special kind format for your GPU enabled runtime inside `helm/openwhisk/runtimes.json`.
+Your next step before the actual OpenWhisk deployment would be to:
 
-```
-        "deepspeech":[
-           {
-                "kind": "python3dscudaaction@selector",
-                "default": true,
-                "image": {
-                    "prefix": "docker5gmedia",
-                    "name": "python3dscudaaction",
-                    "tag": "latest"
-                },
-                "deprecated": false,
-                "attached": {
-                    "attachmentName": "codefile",
-                    "attachmentType": "text/plain"
-                }
-            }
-        ],
-```
+* Define special kind format for your GPU enabled runtime inside `helm/openwhisk/runtimes.json`
+  ```
+  "deepspeech":[
+     {
+          "kind": "python3dscudaaction@selector",
+          "default": true,
+          "image": {
+              "prefix": "docker5gmedia",
+              "name": "python3dscudaaction",
+              "tag": "latest"
+          },
+          "deprecated": false,
+          "attached": {
+              "attachmentName": "codefile",
+              "attachmentType": "text/plain"
+          }
+      }
+  ],
+  ```
+* Increase action memory limit by adding the below stanza to `mycluster.yaml`
+  ```
+  whisk:
+  actions:
+    limits:
+      memory:
+        max: "2048m"
+  ```
 
 ### Labeling GPU nodes
 
