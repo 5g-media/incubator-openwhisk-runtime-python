@@ -18,7 +18,7 @@ The function returns the transcript and the time it took to perform the inferenc
 ### Create the action
 
 ```
-wsk action update myAction ds_action.py --docker docker5gmedia/python3dsaction
+wsk action create myAction ds_action.py --docker docker5gmedia/python3dsaction
 ```
 
 ### Invoke the action
@@ -44,7 +44,7 @@ The same function can be invoked on a GPU node using the GPU runtime image (i.e.
 ### Create the action
 
 ```
-wsk action update myAction-gpu ds_action.py -m 2048 --kind python3dscudaaction@selector
+wsk action create myAction-gpu ds_action.py -m 2048 --kind python3dscudaaction@selector
 ```
 
 ### Invoke the action
