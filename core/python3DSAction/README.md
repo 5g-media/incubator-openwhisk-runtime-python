@@ -10,7 +10,7 @@ Bellow are the versions for the included libraries:
 
 | Image Version | Package | Notes |
 | ------------- | ------- | ----- |
-| CPU: python3dsaction | DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Python 3.5.2. The pre-trained model is installed under /models |
+| CPU:   python3dsaction | DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Python 3.5.2. The pre-trained model is installed under /models |
 | GPU: python3dscudaaction | DeepSpeech-gpu 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Cuda 9.0, cuDNN 7.0, Python 3.5 
 
 
