@@ -52,6 +52,6 @@ Your next step before the actual OpenWhisk deployment would be to:
 
 ### Labeling GPU nodes
 
-For each GPU node you want to invoke actions, execute: `kubectl label nodes <GPU_NODE_NAME> python3dscudaaction=true`
+For each GPU node that you want to invoke the actions at, execute: `kubectl label nodes <GPU_NODE_NAME> python3dscudaaction=true`
 
-This tells OpenWhisk to deploy actions with kind `python3dscudaaction@selector` on Kubernetes GPU nodes that you have just labeled
+This will cause OpenWhisk to deploy actions with kind `python3dscudaaction@selector` on Kubernetes GPU nodes that you have just labeled.
