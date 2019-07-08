@@ -39,7 +39,7 @@ Expect a similar result
 
 ## Running the example on GPU enabled host
 
-The same function can be invoked on a GPU node using the GPU runtime image (i.e. openwhisk/python3dscudaaction). Ensure the following [prerequisites](https://github.com/5g-media/incubator-openwhisk-deploy-kube/blob/gpu/docs/k8s-gpu-prerequisites.md) are met before attempting to invoke the action.
+The same function can be invoked on a GPU node using the GPU runtime image (i.e. docker5gmedia/python3dscudaaction). Ensure the following [prerequisites](https://github.com/5g-media/incubator-openwhisk-deploy-kube/blob/gpu/docs/k8s-gpu-prerequisites.md) are met before attempting to invoke the action.
 
 ### Create the action
 
