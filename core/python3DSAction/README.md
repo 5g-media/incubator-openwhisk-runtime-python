@@ -24,7 +24,7 @@ To view an example with this DS Action check the [sample/speech recognition](./s
 For a complete list execute:
 
 ```bash
-$ docker run --rm --entrypoint pip3 openwhisk/python3dsaction list
+$ docker run --rm --entrypoint pip3 docker5gmedia/python3dsaction list
 ```
 
 #### Available Ubuntu packages
@@ -32,7 +32,7 @@ $ docker run --rm --entrypoint pip3 openwhisk/python3dsaction list
 For a complete list execute:
 
 ```bash
-$ docker run --rm --entrypoint apt openwhisk/python3dsaction list --installed
+$ docker run --rm --entrypoint apt docker5gmedia/python3dsaction list --installed
 ```
 
 #### Available Python packages for GPU version
@@ -40,7 +40,7 @@ $ docker run --rm --entrypoint apt openwhisk/python3dsaction list --installed
 For a complete list execute:
 
 ```bash
-$ docker run --rm --entrypoint pip3 openwhisk/python3dscudaaction list
+$ docker run --rm --entrypoint pip3 docker5gmedia/python3dscudaaction list
 ```
 
 #### Available Ubuntu packages for GPU version
@@ -48,6 +48,6 @@ $ docker run --rm --entrypoint pip3 openwhisk/python3dscudaaction list
 For a complete list execute:
 
 ```bash
-$ docker run --rm --entrypoint apt openwhisk/python3dscudaaction list --installed
+$ docker run --rm --entrypoint apt docker5gmedia/python3dscudaaction list --installed
 ```
 
