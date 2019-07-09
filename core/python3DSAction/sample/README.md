@@ -18,7 +18,7 @@ The function returns the transcript and the time it took to perform the inferenc
 ### Create the action
 
 ```
-wsk action create myAction ds_action.py --docker docker5gmedia/python3dsaction
+wsk -i action create myAction ds_action.py --docker docker5gmedia/python3dsaction
 ```
 
 ### Invoke the action
@@ -26,7 +26,7 @@ wsk action create myAction ds_action.py --docker docker5gmedia/python3dsaction
 Use url to one of the sample wave files
 
 ```
-wsk action invoke -r myAction -p url https://raw.githubusercontent.com/5g-media/incubator-openwhisk-runtime-python/deepspeech/core/python3DSAction/sample/audio/2830-3980-0043.wav
+wsk -i action invoke -r myAction -p url https://raw.githubusercontent.com/5g-media/incubator-openwhisk-runtime-python/gpu/core/python3DSAction/sample/audio/2830-3980-0043.wav
 ```
 
 Expect a similar result
@@ -44,7 +44,7 @@ The same function can be invoked on a GPU node using the GPU runtime image (i.e.
 ### Create the action
 
 ```
-wsk action create myAction-gpu ds_action.py -m 2048 --kind python:3ds@gpu
+wsk -i action create myAction-gpu ds_action.py -m 2048 --kind python:3ds@gpu
 ```
 
 ### Invoke the action
