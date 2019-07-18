@@ -41,22 +41,10 @@ Expect a similar result
 
 The same function can be invoked on a GPU node. Ensure the following [prerequisites](https://github.com/5g-media/incubator-openwhisk-deploy-kube/blob/gpu/docs/k8s-gpu-prerequisites.md) are met before attempting to invoke the action.
 
-### Run the development container
-
-This command runs a playbox container that contains the tools (e.g. pre-configured `wsk` OpenWhisk CLI) needed to run the example. We pass it the ip:port of OpenWhisk controller (Ingress).
-
-If you are running Minikube per [prerequisites](https://github.com/5g-media/incubator-openwhisk-deploy-kube/blob/gpu/docs/k8s-gpu-prerequisites.md#minikube) requirements then simply invoke the below command as is. Otherwise, substitute `sudo minikube ip`:31001 with ip:port of your OpenWhisk controller IP address and port.
-
-```bash
-docker run -it -e OPENWHISK_APIHOST=`sudo minikube ip`:31001 --rm docker5gmedia/5gmedia-playbox-minikube-ow-gpu:1.0 /bin/bash
-```
-
-Run all the following commands from inside the container.
-
 ### Create the action
 
 ```
-wsk -i action create myAction-gpu /incubator-openwhisk-runtime-python/core/python3DSAction/sample/ds_action.py -m 2048 --kind python:3ds@gpu
+wsk -i action create myAction-gpu ds_action.py -m 2048 --kind python:3ds@gpu
 ```
 
 ### Invoke the action
