@@ -29,16 +29,14 @@ import urllib.request
 import wave
 
 
-BEAM_WIDTH = 1024
-N_FEATURES = 26
-N_CONTEXT = 9
-modelPath = '/models/output_graph.pbmm'
-alphabetPath = '/models/alphabet.txt'
+BEAM_WIDTH = 500
+modelPath = '/DeepSpeech/deepspeech-0.6.0-models/output_graph.pbmm'
+alphabetPath = '/DeepSpeech/deepspeech-0.6.0-models/models/alphabet.txt'
 
 LM_ALPHA = 0.75
 LM_BETA = 1.85
-lmPath = '/models/lm.binary'
-triePath = '/models/trie'
+lmPath = '/DeepSpeech/deepspeech-0.6.0-models/lm.binary'
+triePath = '/DeepSpeech/deepspeech-0.6.0-models/trie'
 
 
 try:
@@ -54,34 +52,35 @@ def main(parm):
             return {
                 'error': "Missing 'url' parameter"
             }
-        def convert_samplerate(audio_path):
-            sox_cmd = 'sox {} --type raw --bits 16 --channels 1 --rate 16000 --encoding signed-integer --endian little --compression 0.0 --no-dither - '.format(quote(audio_path))
+        def convert_samplerate(audio_path, desired_sample_rate):
+            sox_cmd = 'sox {} --type raw --bits 16 --channels 1 --rate 16000 --encoding signed-integer --endian little --compression 0.0 --no-dither - '.format(quote(audio_path), desired_sample_rate)
             try:
                 output = subprocess.check_output(shlex.split(sox_cmd), stderr=subprocess.PIPE)
             except subprocess.CalledProcessError as e:
                 raise RuntimeError('SoX returned non-zero status: {}'.format(e.stderr))
             except OSError as e:
-                raise OSError(e.errno, 'SoX not found, use 16kHz files or install it: {}'.format(e.strerror))
+                raise OSError(e.errno, 'SoX not found, use {}hz files or install it: {}'.format(desired_sample_rate, e.strerror))
 
-            return 16000, np.frombuffer(output, np.int16)
+            return desired_sample_rate, np.frombuffer(output, np.int16)
 
         print('Loading model from file {}'.format(modelPath))
         model_load_start = timer()
 
-        ds = Model(modelPath, N_FEATURES, N_CONTEXT, alphabetPath, BEAM_WIDTH)
+        ds = Model(modelPath, BEAM_WIDTH)
         model_load_end = timer() - model_load_start
         print('Loaded model in {:.3}s.'.format(model_load_end))
 
         lm_load_start = timer()
-        ds.enableDecoderWithLM(alphabetPath, lmPath, triePath, LM_ALPHA, LM_BETA)
+        ds.enableDecoderWithLM(lmPath, triePath, LM_ALPHA, LM_BETA)
         lm_load_end = timer() - lm_load_start
         print('Loaded language model in {:.3}s.'.format(lm_load_end))
 
         urllib.request.urlretrieve(parm['url'], '/audio-temp.wav')
         fin = wave.open('/audio-temp.wav', 'rb')
+        desired_sample_rate = ds.sampleRate()
         fs = fin.getframerate()
-        if fs != 16000:
-            print('Warning: original sample rate ({}) is different than 16kHz. Resampling might produce erratic speech recognition.'.format(fs))
+        if fs != desired_sample_rate:
+            print('Warning: original sample rate ({}) is different than {}hz. Resampling might produce erratic speech recognition.'.format(fs, desired_sample_rate), file=sys.stderr)
             fs, audio = convert_samplerate('/audio-temp.wav')
         else:
             audio = np.frombuffer(fin.readframes(fin.getnframes()), np.int16)
@@ -91,7 +90,7 @@ def main(parm):
 
         print('Running inference.')
         inference_start = timer()
-        transcript = ds.stt(audio, fs)
+        transcript = ds.stt(audio)
         print(transcript)
         inference_end = timer() - inference_start
         print('Inference took %0.3fs for %0.3fs audio file.' % (inference_end, audio_length))
