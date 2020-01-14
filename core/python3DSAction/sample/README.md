@@ -47,6 +47,12 @@ The same function can be invoked on a GPU node. Ensure the following [prerequisi
 wsk -i action create myAction-gpu ds_action.py -m 2048 --kind python:3ds@gpu
 ```
 
+**or for deepspeech 0.6.0 runtime:**
+
+```
+wsk -i action create myAction-gpu ds_action-0.6.0.py -m 2048 --kind python:3ds-0.6.0@gpu
+```
+
 ### Invoke the action
 
 ```

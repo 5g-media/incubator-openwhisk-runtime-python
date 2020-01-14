@@ -11,7 +11,8 @@ Bellow are the versions for the included libraries:
 | Image Version | Package | Notes |
 | ------------- | ------- | ----- |
 | CPU based:   python3dsaction | DeepSpeech 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Python 3.5.2. The pre-trained model is installed under /models |
-| GPU based: python3dscudaaction | DeepSpeech-gpu 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Cuda 9.0, cuDNN 7.0, Python 3.5 
+| GPU based: python3dscudaaction | DeepSpeech-gpu 0.4.1, DeepSpeech Models 0.4.1 | Based on Ubuntu 16.04, Cuda 9.0, cuDNN 7.0, Python 3.5 |
+| GPU based: python3dscudaaction:0.6.0 | DeepSpeech-gpu 0.6.0, DeepSpeech Models 0.6.0 | Based on Ubuntu 18.04, Cuda 10.0, cuDNN 7.0 Python 3.6. Tensorflow built against Cuda Compute Capabilities 5.0 (Quadro M1000M) to prevent hitting a lengthy JIT compile step
 
 
 #### DS Action Sample
